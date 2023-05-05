@@ -4,10 +4,27 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+//
+import { Provider } from 'react-redux';
+
+//
+import { createStore } from 'redux';
+
+// import index from reducers
+import rootReducer from './Services/Reducers/index';
+
+//Now create store.
+
+const store = createStore(rootReducer);
+//console.log("Initial",store.getState());
+store.subscribe(()=>console.log("Updated",store.getState()))
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store = {store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
