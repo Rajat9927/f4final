@@ -33,14 +33,16 @@ function Home() {
       })
 
   }
+  let message;
   dispatch(saveLogin(getuser));
   //console.log(getuser)
   if(getuser.id){
     //console.log(getuser.id);
     navigate("/Profile");
   }
+  
   else if(getuser.message){
-
+    let message = getuser.message;
   }
   else{
     console.log()
@@ -52,6 +54,7 @@ function Home() {
       <div><label>Username : </label><input type="text" name="username" onChange={(e) => setUsername(e.target.value)} /></div>
       <div><label>Password : </label><input type="text" name="password" onChange={(e) => setPassword(e.target.value)} /></div>
       <div><button onClick={loginCheck}>Login</button></div>
+      <p style={{color:"red"}}>{getuser.message}</p>
     </>
   )
 }
